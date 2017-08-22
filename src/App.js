@@ -5,7 +5,7 @@ import './App.css';
 
 class App extends Component {
     render() {
-        console.log(populateMap(50,50));
+        console.log(populateMap(10, 10));
         return (
             <div className="App">
                 <div className="hexagon-section">
@@ -53,6 +53,7 @@ class HexagonRow extends Component {
         )
     }
 }
+
 const Hexagon = ({team}) =>
     <div className="hexagon">
     </div>;
@@ -64,36 +65,39 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
-const checkSpaceLeftMatrix = (matrix, width, height) => {
+const checkSpaceLeftMatrix = (matrix) => {
 
+    const height = matrix.length, width = matrix[0].length;
     for (let i = 0; i < height; i++) {
         for (let q = 0; q < width; q++) {
             if (matrix[i][q] === 0) {
+                console.log("true")
                 return true;
             }
         }
     }
 
+    console.log("false");
     return false;
 };
 
-const populateMap = (width, height) => {
+const populateMap = (width, height, playerCounterMultiplier = 1000) => {
     const sectionMaxWidth = 6,
         sectionMaxHeight = 4
     ;
 
-    let masterMatrix = createMasterMatrix(width, height),
-        playerOneID_counter = 100,
-        playerTwoID_counter = 200
-    ;
+    let masterMatrix = createMasterMatrix(width, height);
+    // Create the player 1 and 2 counters. number they must start with number 1 and 2 to identify
+    let playerOneID_counter = playerCounterMultiplier,
+        playerTwoID_counter = 2 * playerCounterMultiplier;
+
 
     // Fill the matrix until there's no space left
     while (checkSpaceLeftMatrix(masterMatrix)) {
         const randPlayerID = getRandomInt(1, 3), // get 1 or 2 randomly
-              sectionHeight = getRandomInt(1, sectionMaxHeight);
-        const  currentPlaterID = randPlayerID === 1 ? ++playerOneID_counter : ++playerTwoID_counter;
+            sectionHeight = getRandomInt(1, sectionMaxHeight);
+        const currentPlaterID = randPlayerID === 1 ? ++playerOneID_counter : ++playerTwoID_counter;
         let currentHeight = 0;
-
 
         for (let i = 0; i < height; i++) {
             const sectionWidth = getRandomInt(1, sectionMaxWidth);
@@ -102,7 +106,7 @@ const populateMap = (width, height) => {
 
                 if (masterMatrix[i][q] === 0) {
                     // If we've added a row already, check the item above to make sure it belongs to the same section. This makes sure the section is connected
-                    if (currentHeight > 0 && masterMatrix[i-1][q] !== currentPlaterID) {
+                    if (currentHeight > 0 && comparePlayersInMatrix(currentPlaterID, masterMatrix[i - 1][q], playerCounterMultiplier)) {
                         continue;
                     }
 
@@ -123,6 +127,9 @@ const populateMap = (width, height) => {
 
     return masterMatrix;
 };
+
+const comparePlayersInMatrix = (currentPlayer, toCompareWithPlayer, playerCounterMultiplier) =>
+~~(currentPlayer / playerCounterMultiplier) === ~~(toCompareWithPlayer / playerCounterMultiplier);
 
 const createMasterMatrix = (width, height) => {
     let masterMatrix = [];
