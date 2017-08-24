@@ -71,7 +71,6 @@ const checkSpaceLeftMatrix = (matrix) => {
     for (let i = 0; i < height; i++) {
         for (let q = 0; q < width; q++) {
             if (matrix[i][q] === 0) {
-                console.log("true")
                 return true;
             }
         }
@@ -91,34 +90,49 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
     let playerOneID_counter = playerCounterMultiplier,
         playerTwoID_counter = 2 * playerCounterMultiplier;
 
-
+    let counter = 0;
     // Fill the matrix until there's no space left
     while (checkSpaceLeftMatrix(masterMatrix)) {
+
         const randPlayerID = getRandomInt(1, 3), // get 1 or 2 randomly
             sectionHeight = getRandomInt(1, sectionMaxHeight);
+
         const currentPlaterID = randPlayerID === 1 ? ++playerOneID_counter : ++playerTwoID_counter;
         let currentHeight = 0;
 
+        counter++;
+        if (counter === 100) {
+            console.log(masterMatrix);
+            return false;
+        }
+
         for (let i = 0; i < height; i++) {
+
             const sectionWidth = getRandomInt(1, sectionMaxWidth);
-            let currentWidth = 0;
+            let currentWidth = 0,
+                addedValue = false;
+
             for (let q = 0; q < width; q++) {
 
                 if (masterMatrix[i][q] === 0) {
-                    // If we've added a row already, check the item above to make sure it belongs to the same section. This makes sure the section is connected
-                    if (currentHeight > 0 && comparePlayersInMatrix(currentPlaterID, masterMatrix[i - 1][q], playerCounterMultiplier)) {
+                    // If we've added a row already, check the item above to make sure it belongs to the same section. This makes sure the section is connected. Continue if not.
+                    if (currentHeight > 0 && masterMatrix[i-1][q] !== currentPlaterID) {
                         continue;
                     }
 
                     masterMatrix[i][q] = currentPlaterID;
-                    currentWidth++
+                    currentWidth++;
+                    addedValue = true;
                 }
 
                 if (currentWidth === sectionWidth) {
                     break;
                 }
             }
-            currentHeight++;
+
+            if(addedValue){
+                currentHeight++;
+            }
             if (currentHeight === sectionHeight) {
                 break;
             }
@@ -128,6 +142,7 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
     return masterMatrix;
 };
 
+// Divides the player id for that place (e.j 2005) to the counterMultiplier (1000). Get the integer that is the player ID with ~~ (2)
 const comparePlayersInMatrix = (currentPlayer, toCompareWithPlayer, playerCounterMultiplier) =>
 ~~(currentPlayer / playerCounterMultiplier) === ~~(toCompareWithPlayer / playerCounterMultiplier);
 
