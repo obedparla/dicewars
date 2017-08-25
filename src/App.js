@@ -5,26 +5,26 @@ import './App.css';
 
 class App extends Component {
     render() {
-        console.log(populateMap(10, 10));
+        const masterMatrix = populateMap(10, 10);
+        console.log(masterMatrix);
+
         return (
-            <div className="App">
-                <div className="hexagon-section">
-                    <HexagonRow team={1} amountHexagons={3}/>
-                    <HexagonRow team={2} amountHexagons={4}/>
-                    <HexagonRow amountHexagons={3}/>
-                </div>
-                <div className="hexagon-section">
-                    <HexagonRow team={1} amountHexagons={3}/>
-                    <HexagonRow team={2} amountHexagons={4}/>
-                    <HexagonRow amountHexagons={3}/>
-                </div>
-                <div className="hexagon-section">
-                    <HexagonRow team={1} amountHexagons={3}/>
-                    <HexagonRow team={2} amountHexagons={4}/>
-                    <HexagonRow amountHexagons={3}/>
-                </div>
+            <div>
+                {   masterMatrix.map((row, index) => {
+                        console.log(index + " " + row);
+                        const hexagonClass = classNames(
+                            'hexagon-row',
+                            {'even': index % 2 === 0}
+                        );
+                        return <div className={hexagonClass}>{
+                            row.map((val, index) =>{
+                            return <Hexagon key={val+""+index} team={val}/>
+                        })}
+                        </div>
+                    }
+                )}
             </div>
-        );
+        )
     }
 }
 
@@ -55,15 +55,31 @@ class HexagonRow extends Component {
 }
 
 const Hexagon = ({team}) =>
-    <div className="hexagon">
+    <div className={"hexagon" + " " + team}>
     </div>;
 
 
-function getRandomInt(min, max) {
+const buildHexagonLayout = (masterMatrix) => {
+
+    const height = masterMatrix.length, width = masterMatrix[0].length;
+
+    for (let i = 0; i < height; i++) {
+        for (let q = 0; q < width; q++) {
+            if (masterMatrix[i][q] === 0) {
+                continue;
+            }
+
+
+        }
+    }
+
+};
+
+const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-}
+};
 
 const checkSpaceLeftMatrix = (matrix) => {
 
@@ -116,7 +132,7 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
 
                 if (masterMatrix[i][q] === 0) {
                     // If we've added a row already, check the item above to make sure it belongs to the same section. This makes sure the section is connected. Continue if not.
-                    if (currentHeight > 0 && masterMatrix[i-1][q] !== currentPlaterID) {
+                    if (currentHeight > 0 && masterMatrix[i - 1][q] !== currentPlaterID) {
                         continue;
                     }
 
@@ -130,7 +146,7 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
                 }
             }
 
-            if(addedValue){
+            if (addedValue) {
                 currentHeight++;
             }
             if (currentHeight === sectionHeight) {
