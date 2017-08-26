@@ -17,9 +17,9 @@ class App extends Component {
                             {'even': index % 2 === 0}
                         );
                         return <div className={hexagonClass}>{
-                            row.map((val, index) =>{
-                            return <Hexagon key={val+""+index} team={val}/>
-                        })}
+                            row.map((val, index) => {
+                                return <Hexagon key={val + "" + index} groupID={val} teamID={getPlayerID(val)} groupNumber={getGroupNumber(val)}/>
+                            })}
                         </div>
                     }
                 )}
@@ -27,6 +27,23 @@ class App extends Component {
         )
     }
 }
+
+
+const Hexagon = ({groupID, teamID, groupNumber}) => {
+    const hexagonClass = classNames(
+        "hexagon",
+        groupID,
+        "team-" + teamID,
+        "group-" + groupNumber
+    );
+    return (
+        <div className={hexagonClass}>
+            <div className="top"></div>
+            <div className="middle"></div>
+            <div className="bottom"></div>
+        </div>
+    )
+};
 
 
 class HexagonRow extends Component {
@@ -53,11 +70,6 @@ class HexagonRow extends Component {
         )
     }
 }
-
-const Hexagon = ({team}) =>
-    <div className={"hexagon" + " " + team}>
-    </div>;
-
 
 const buildHexagonLayout = (masterMatrix) => {
 
@@ -135,6 +147,9 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
                     if (currentHeight > 0 && masterMatrix[i - 1][q] !== currentPlaterID) {
                         continue;
                     }
+                    if(currentWidth > 0 && q > 0 && masterMatrix[i][q - 1] !== currentPlaterID){
+                        continue;
+                    }
 
                     masterMatrix[i][q] = currentPlaterID;
                     currentWidth++;
@@ -161,6 +176,19 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
 // Divides the player id for that place (e.j 2005) to the counterMultiplier (1000). Get the integer that is the player ID with ~~ (2)
 const comparePlayersInMatrix = (currentPlayer, toCompareWithPlayer, playerCounterMultiplier) =>
 ~~(currentPlayer / playerCounterMultiplier) === ~~(toCompareWithPlayer / playerCounterMultiplier);
+
+const getPlayerID = (currentPlayerID) => {
+    let string = "" + currentPlayerID;
+    return string[0];
+}
+
+const getGroupNumber = (currentPlayerID) => {
+    let string = "" + currentPlayerID;
+    // In case the group number is above 9
+    if( string[string.length - 2] !== "0")
+        return string[string.length - 2] + string[string.length - 1];
+    return string[string.length - 1];
+}
 
 const createMasterMatrix = (width, height) => {
     let masterMatrix = [];
