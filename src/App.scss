@@ -32,6 +32,7 @@ $team1-color: #ff26a5;
 $team2-color: #496dff;
 $no-team-color: #ececec;
 $hovered-color: black;
+$clicked-color: #27ff3e;
 
 .hexagon {
   float: left;
@@ -65,7 +66,7 @@ $hovered-color: black;
       }
     }
 
-    &.hovered-true{
+    &.hovered-section{
       .top {
         border-bottom-color: $hovered-color;
       }
@@ -76,6 +77,20 @@ $hovered-color: black;
 
       .bottom {
         border-top-color: $hovered-color;
+      }
+    }
+
+    &.clicked-section{
+      .top {
+        border-bottom-color: $clicked-color;
+      }
+
+      .middle {
+        background: $clicked-color;
+      }
+
+      .bottom {
+        border-top-color: $clicked-color;
       }
     }
   }
@@ -107,7 +122,7 @@ $hovered-color: black;
       }
     }
 
-    &.hovered-true{
+    &.hovered-section{
       .top {
         border-bottom-color: $hovered-color;
       }
@@ -118,6 +133,21 @@ $hovered-color: black;
 
       .bottom {
         border-top-color: $hovered-color;
+      }
+    }
+
+
+    &.clicked-section{
+      .top {
+        border-bottom-color: $clicked-color;
+      }
+
+      .middle {
+        background: $clicked-color;
+      }
+
+      .bottom {
+        border-top-color: $clicked-color;
       }
     }
   }

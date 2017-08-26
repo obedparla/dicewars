@@ -10,9 +10,11 @@ class App extends Component {
 
         this.state = {
             sectionHovered: 0,
+            sectionClicked: 0,
             masterMatrix: []
     };
-        this.selectGroup = this.selectGroup.bind(this);
+        this.highlightSection = this.highlightSection.bind(this);
+        this.selectSection = this.selectSection.bind(this);
     }
 
     componentDidMount(){
@@ -20,13 +22,16 @@ class App extends Component {
     }
 
 
-    selectGroup(groupID){
-        console.log("hovering over: " + groupID)
-        this.setState({sectionHovered: groupID});
+    highlightSection(sectionID){
+        this.setState({sectionHovered: sectionID});
+    }
+    selectSection(sectionID){
+        this.setState({sectionClicked: sectionID});
     }
 
     render() {
-        const {masterMatrix, sectionHovered} = this.state
+        const {masterMatrix, sectionHovered, sectionClicked} = this.state;
+
         return (
             <div>
                 {   masterMatrix.map((row, index) => {
@@ -37,15 +42,16 @@ class App extends Component {
                     );
 
                         return <div className={hexagonContClass}>{
-                            row.map((groupID, index) => {
+                            row.map((sectionID, index) => {
                                 const hexagonClass = classNames(
                                     "hexagon",
-                                    groupID,
-                                    "team-" + getPlayerID(groupID),
-                                    "group-" + getGroupNumber(groupID),
-                                    {"hovered-true": sectionHovered === groupID}
+                                    sectionID,
+                                    "team-" + getPlayerID(sectionID),
+                                    "group-" + getGroupNumber(sectionID),
+                                    {"hovered-section": sectionHovered === sectionID},
+                                    {"clicked-section": sectionClicked === sectionID},
                                 );
-                                return <Hexagon key={groupID + "" + index} classNam={hexagonClass} onMouseOver={() => this.selectGroup(groupID)}/>
+                                return <Hexagon key={sectionID + "" + index} classNam={hexagonClass} onClick={() => this.selectSection(sectionID)} onMouseOver={() => this.highlightSection(sectionID)}/>
                             })}
                         </div>
                     }
@@ -56,9 +62,9 @@ class App extends Component {
 }
 
 
-const Hexagon = ({classNam, onMouseOver}) => {
+const Hexagon = ({classNam, onMouseOver, onClick}) => {
     return (
-        <div className={classNam} onMouseOver={onMouseOver}>
+        <div className={classNam} onMouseOver={onMouseOver} onClick={onClick}>
             <div className="top"></div>
             <div className="middle"></div>
             <div className="bottom"></div>
