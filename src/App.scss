@@ -31,6 +31,8 @@
 $team1-color: #ff26a5;
 $team2-color: #496dff;
 $no-team-color: #ececec;
+$hovered-color: black;
+$clicked-color: #27ff3e;
 
 .hexagon {
   float: left;
@@ -63,9 +65,38 @@ $no-team-color: #ececec;
         }
       }
     }
+
+    &.hovered-section{
+      .top {
+        border-bottom-color: $hovered-color;
+      }
+
+      .middle {
+        background: $hovered-color;
+      }
+
+      .bottom {
+        border-top-color: $hovered-color;
+      }
+    }
+
+    &.clicked-section{
+      .top {
+        border-bottom-color: $clicked-color;
+      }
+
+      .middle {
+        background: $clicked-color;
+      }
+
+      .bottom {
+        border-top-color: $clicked-color;
+      }
+    }
   }
 
   &.team-2 {
+
     @for $i from 1 through 50 {
       &.group-#{$i} {
         $percentage: 4*$i;
@@ -88,6 +119,35 @@ $no-team-color: #ececec;
         .bottom {
           border-top-color: $modified-team2-color;
         }
+      }
+    }
+
+    &.hovered-section{
+      .top {
+        border-bottom-color: $hovered-color;
+      }
+
+      .middle {
+        background: $hovered-color;
+      }
+
+      .bottom {
+        border-top-color: $hovered-color;
+      }
+    }
+
+
+    &.clicked-section{
+      .top {
+        border-bottom-color: $clicked-color;
+      }
+
+      .middle {
+        background: $clicked-color;
+      }
+
+      .bottom {
+        border-top-color: $clicked-color;
       }
     }
   }

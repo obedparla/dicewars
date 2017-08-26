@@ -4,21 +4,54 @@ import {_} from 'lodash';
 import './App.css';
 
 class App extends Component {
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            sectionHovered: 0,
+            sectionClicked: 0,
+            masterMatrix: []
+    };
+        this.highlightSection = this.highlightSection.bind(this);
+        this.selectSection = this.selectSection.bind(this);
+    }
+
+    componentDidMount(){
+        this.setState({ masterMatrix: populateMap(10, 10)});
+    }
+
+
+    highlightSection(sectionID){
+        this.setState({sectionHovered: sectionID});
+    }
+    selectSection(sectionID){
+        this.setState({sectionClicked: sectionID});
+    }
+
     render() {
-        const masterMatrix = populateMap(10, 10);
-        console.log(masterMatrix);
+        const {masterMatrix, sectionHovered, sectionClicked} = this.state;
 
         return (
             <div>
                 {   masterMatrix.map((row, index) => {
-                        console.log(index + " " + row);
-                        const hexagonClass = classNames(
-                            'hexagon-row',
-                            {'even': index % 2 === 0}
-                        );
-                        return <div className={hexagonClass}>{
-                            row.map((val, index) => {
-                                return <Hexagon key={val + "" + index} groupID={val} teamID={getPlayerID(val)} groupNumber={getGroupNumber(val)}/>
+                        // console.log(index + " " + row);
+                    const hexagonContClass = classNames(
+                        'hexagon-row',
+                        {'even': index % 2 === 0}
+                    );
+
+                        return <div className={hexagonContClass}>{
+                            row.map((sectionID, index) => {
+                                const hexagonClass = classNames(
+                                    "hexagon",
+                                    sectionID,
+                                    "team-" + getPlayerID(sectionID),
+                                    "group-" + getGroupNumber(sectionID),
+                                    {"hovered-section": sectionHovered === sectionID},
+                                    {"clicked-section": sectionClicked === sectionID},
+                                );
+                                return <Hexagon key={sectionID + "" + index} classNam={hexagonClass} onClick={() => this.selectSection(sectionID)} onMouseOver={() => this.highlightSection(sectionID)}/>
                             })}
                         </div>
                     }
@@ -29,15 +62,9 @@ class App extends Component {
 }
 
 
-const Hexagon = ({groupID, teamID, groupNumber}) => {
-    const hexagonClass = classNames(
-        "hexagon",
-        groupID,
-        "team-" + teamID,
-        "group-" + groupNumber
-    );
+const Hexagon = ({classNam, onMouseOver, onClick}) => {
     return (
-        <div className={hexagonClass}>
+        <div className={classNam} onMouseOver={onMouseOver} onClick={onClick}>
             <div className="top"></div>
             <div className="middle"></div>
             <div className="bottom"></div>
@@ -80,8 +107,6 @@ const buildHexagonLayout = (masterMatrix) => {
             if (masterMatrix[i][q] === 0) {
                 continue;
             }
-
-
         }
     }
 
@@ -104,7 +129,7 @@ const checkSpaceLeftMatrix = (matrix) => {
         }
     }
 
-    console.log("false");
+    // console.log("false");
     return false;
 };
 
@@ -130,7 +155,7 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
 
         counter++;
         if (counter === 100) {
-            console.log(masterMatrix);
+            // console.log(masterMatrix);
             return false;
         }
 
