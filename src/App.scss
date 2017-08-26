@@ -1,0 +1,149 @@
+//.hexagon {
+//  margin-top: 30px;
+//  width: 104px;
+//  height: 60px;
+//  background-color: $no-team-color;
+//  position: relative;
+//  float: left;
+//
+//  &:before {
+//    content: " ";
+//    width: 0;
+//    height: 0;
+//    border-bottom: 30px solid $no-team-color;
+//    border-left: 52px solid transparent;
+//    border-right: 52px solid transparent;
+//    position: absolute;
+//    top: -30px;
+//  }
+//
+//  &:after {
+//    content: "";
+//    width: 0;
+//    position: absolutÁe;
+//    bottom: -30px;
+//    border-top: 30px solid $no-team-color;
+//    border-left: 52px solid transparent;
+//    border-right: 52px solid transparent;
+//  }
+//}
+
+$team1-color: #ff26a5;
+$team2-color: #496dff;
+$no-team-color: #ececec;
+
+.hexagon {
+  float: left;
+  margin-left: 3px;
+  margin-bottom: -26px;
+
+  &.team-1 {
+
+    @for $i from 1 through 25 {
+      &.group-#{$i} {
+        $percentage: 4*$i;
+        $modified-team1-color: $team1-color;
+        @if $i < 11 {
+          $modified-team1-color: darken($team1-color, $percentage);
+
+        }@else{
+          $percentage: 4*$i - 40;
+          $modified-team1-color: lighten($team1-color, $percentage);
+        }
+        .top {
+          border-bottom-color: $modified-team1-color;
+        }
+
+        .middle {
+          background: $modified-team1-color;
+        }
+
+        .bottom {
+          border-top-color: $modified-team1-color;
+        }
+      }
+    }
+  }
+
+  &.team-2 {
+    @for $i from 1 through 50 {
+      &.group-#{$i} {
+        $percentage: 4*$i;
+        $modified-team2-color: $team2-color;
+        @if $i < 25{
+          $modified-team2-color: darken($team2-color, $percentage);
+
+        }@else{
+          $percentage: 4*$i - 100;
+          $modified-team2-color: lighten($team2-color, $percentage);
+        }
+        .top {
+          border-bottom-color: $modified-team2-color;
+        }
+
+        .middle {
+          background: $modified-team2-color;
+        }
+
+        .bottom {
+          border-top-color: $modified-team2-color;
+        }
+      }
+    }
+  }
+
+  &.team-2 {
+
+  }
+}
+
+.hexagon .top {
+  width: 0;
+  border-bottom: 30px solid $no-team-color;
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+}
+
+.hexagon .middle {
+  width: 104px;
+  height: 60px;
+  background: $no-team-color;
+}
+
+.hexagon .bottom {
+  width: 0;
+  border-top: 30px solid $no-team-color;
+
+  border-left: 52px solid transparent;
+  border-right: 52px solid transparent;
+}
+
+.hexagon-row.even {
+  margin-left: 53px;
+}
+
+.hexagon-row {
+  clear: left;
+
+  &.team-1 .hexagon {
+    background-color: $team2-color;
+
+    &:before {
+      border-bottom-color: $team2-color;
+    }
+    &:after {
+      border-top-color: $team2-color;
+    }
+
+  }
+  &.team-2 .hexagon {
+    background-color: blue;
+
+    &:before {
+      border-bottom-color: blue;
+    }
+    &:after {
+      border-top-color: blue;
+    }
+  }
+}
