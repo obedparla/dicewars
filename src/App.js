@@ -4,28 +4,48 @@ import {_} from 'lodash';
 import './App.css';
 
 class App extends Component {
-    render() {
-        const masterMatrix = populateMap(10, 10);
-        console.log(masterMatrix);
 
+    constructor(props){
+        super(props);
+
+        this.state = {
+            sectionHovered: 0,
+            masterMatrix: []
+    };
+        this.selectGroup = this.selectGroup.bind(this);
+    }
+
+    componentDidMount(){
+        this.setState({ masterMatrix: populateMap(10, 10)});
+    }
+
+
+    selectGroup(groupID){
+        console.log("hovering over: " + groupID)
+        this.setState({sectionHovered: groupID});
+    }
+
+    render() {
+        const {masterMatrix, sectionHovered} = this.state
         return (
             <div>
                 {   masterMatrix.map((row, index) => {
-                        console.log(index + " " + row);
+                        // console.log(index + " " + row);
                     const hexagonContClass = classNames(
                         'hexagon-row',
                         {'even': index % 2 === 0}
                     );
 
                         return <div className={hexagonContClass}>{
-                            row.map((val, index) => {
+                            row.map((groupID, index) => {
                                 const hexagonClass = classNames(
                                     "hexagon",
-                                    val,
-                                    "team-" + getPlayerID(val),
-                                    "group-" + getGroupNumber(val)
+                                    groupID,
+                                    "team-" + getPlayerID(groupID),
+                                    "group-" + getGroupNumber(groupID),
+                                    {"hovered-true": sectionHovered === groupID}
                                 );
-                                return <Hexagon key={val + "" + index} classNam={hexagonClass}/>
+                                return <Hexagon key={groupID + "" + index} classNam={hexagonClass} onMouseOver={() => this.selectGroup(groupID)}/>
                             })}
                         </div>
                     }
@@ -36,9 +56,9 @@ class App extends Component {
 }
 
 
-const Hexagon = ({classNam}) => {
+const Hexagon = ({classNam, onMouseOver}) => {
     return (
-        <div className={classNam}>
+        <div className={classNam} onMouseOver={onMouseOver}>
             <div className="top"></div>
             <div className="middle"></div>
             <div className="bottom"></div>
@@ -81,8 +101,6 @@ const buildHexagonLayout = (masterMatrix) => {
             if (masterMatrix[i][q] === 0) {
                 continue;
             }
-
-
         }
     }
 
@@ -105,7 +123,7 @@ const checkSpaceLeftMatrix = (matrix) => {
         }
     }
 
-    console.log("false");
+    // console.log("false");
     return false;
 };
 
@@ -131,7 +149,7 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
 
         counter++;
         if (counter === 100) {
-            console.log(masterMatrix);
+            // console.log(masterMatrix);
             return false;
         }
 

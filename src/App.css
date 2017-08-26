@@ -152,6 +152,12 @@
     background: white; }
   .hexagon.team-1.group-25 .bottom {
     border-top-color: white; }
+  .hexagon.team-1.hovered-true .top {
+    border-bottom-color: black; }
+  .hexagon.team-1.hovered-true .middle {
+    background: black; }
+  .hexagon.team-1.hovered-true .bottom {
+    border-top-color: black; }
   .hexagon.team-2.group-1 .top {
     border-bottom-color: #355dff; }
   .hexagon.team-2.group-1 .middle {
@@ -452,6 +458,12 @@
     background: white; }
   .hexagon.team-2.group-50 .bottom {
     border-top-color: white; }
+  .hexagon.team-2.hovered-true .top {
+    border-bottom-color: black; }
+  .hexagon.team-2.hovered-true .middle {
+    background: black; }
+  .hexagon.team-2.hovered-true .bottom {
+    border-top-color: black; }
 
 .hexagon .top {
   width: 0;
