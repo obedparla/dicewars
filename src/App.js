@@ -12,13 +12,20 @@ class App extends Component {
             <div>
                 {   masterMatrix.map((row, index) => {
                         console.log(index + " " + row);
-                        const hexagonClass = classNames(
-                            'hexagon-row',
-                            {'even': index % 2 === 0}
-                        );
-                        return <div className={hexagonClass}>{
+                    const hexagonContClass = classNames(
+                        'hexagon-row',
+                        {'even': index % 2 === 0}
+                    );
+
+                        return <div className={hexagonContClass}>{
                             row.map((val, index) => {
-                                return <Hexagon key={val + "" + index} groupID={val} teamID={getPlayerID(val)} groupNumber={getGroupNumber(val)}/>
+                                const hexagonClass = classNames(
+                                    "hexagon",
+                                    val,
+                                    "team-" + getPlayerID(val),
+                                    "group-" + getGroupNumber(val)
+                                );
+                                return <Hexagon key={val + "" + index} classNam={hexagonClass}/>
                             })}
                         </div>
                     }
@@ -29,15 +36,9 @@ class App extends Component {
 }
 
 
-const Hexagon = ({groupID, teamID, groupNumber}) => {
-    const hexagonClass = classNames(
-        "hexagon",
-        groupID,
-        "team-" + teamID,
-        "group-" + groupNumber
-    );
+const Hexagon = ({classNam}) => {
     return (
-        <div className={hexagonClass}>
+        <div className={classNam}>
             <div className="top"></div>
             <div className="middle"></div>
             <div className="bottom"></div>
