@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import classNames from 'classnames';
-import {_} from 'lodash';
 import './App.css';
 
 class App extends Component {
@@ -25,9 +24,9 @@ class App extends Component {
 
 
     highlightSection(sectionID) {
-        this.setState((prevState, props) => {
+        this.setState((prevState) => {
             const {sectionClicked, sectionsObject, masterMatrix} = prevState;
-
+            
             // If there's no section clicked or the hover is allowed (when a section is clicked)
             // console.log(sectionsObject[sectionID].positions);
             if (sectionClicked === 0 || checkAllowedHover(sectionsObject[sectionID].positions, masterMatrix, sectionClicked)) {
@@ -44,9 +43,9 @@ class App extends Component {
             const {sectionClicked} = prevState;
 
             if (sectionClicked === sectionID)
-                return {sectionClicked: 0}
+                return {sectionClicked: 0};
             else
-                return {sectionClicked: sectionID}
+                return {sectionClicked: sectionID};
         });
     }
 
@@ -127,7 +126,6 @@ const buildHexagonLayout = (masterMatrix) => {
     for (let i = 0; i < height; i++) {
         for (let q = 0; q < width; q++) {
             if (masterMatrix[i][q] === 0) {
-                continue;
             }
         }
     }
@@ -266,13 +264,13 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
 };
 
 // Divides the player id for that place (e.j 2005) to the counterMultiplier (1000). Get the integer that is the player ID with ~~ (2)
-const comparePlayersInMatrix = (currentPlayer, toCompareWithPlayer, playerCounterMultiplier) =>
-~~(currentPlayer / playerCounterMultiplier) === ~~(toCompareWithPlayer / playerCounterMultiplier);
+// const comparePlayersInMatrix = (currentPlayer, toCompareWithPlayer, playerCounterMultiplier) =>
+// ~~(currentPlayer / playerCounterMultiplier) === ~~(toCompareWithPlayer / playerCounterMultiplier);
 
 const getPlayerID = (currentPlayerID) => {
     let string = "" + currentPlayerID;
     return string[0];
-}
+};
 
 const getGroupNumber = (currentPlayerID) => {
     let string = "" + currentPlayerID;
@@ -280,7 +278,7 @@ const getGroupNumber = (currentPlayerID) => {
     if (string[string.length - 2] !== "0")
         return string[string.length - 2] + string[string.length - 1];
     return string[string.length - 1];
-}
+};
 
 const createMasterMatrix = (width, height) => {
     let masterMatrix = [];
