@@ -26,7 +26,7 @@ class App extends Component {
     highlightSection(sectionID) {
         this.setState((prevState) => {
             const {sectionClicked, sectionsObject, masterMatrix} = prevState;
-            
+
             // If there's no section clicked or the hover is allowed (when a section is clicked)
             // console.log(sectionsObject[sectionID].positions);
             if (sectionClicked === 0 || checkAllowedHover(sectionsObject[sectionID].positions, masterMatrix, sectionClicked)) {
@@ -91,45 +91,6 @@ const Hexagon = ({classNam, onMouseOver, onClick}) => {
             <div className="bottom"></div>
         </div>
     )
-};
-
-
-class HexagonRow extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const {amountHexagons, team} = this.props;
-
-        const hexagonClass = classNames(
-            'hexagon-row',
-            'team-' + team,
-            {'even': amountHexagons % 2 === 0}
-        );
-        const arrayAmountHexagons = sizeToArray(amountHexagons);
-
-        return (
-            <div className={hexagonClass}>
-                {arrayAmountHexagons.map(function () {
-                    return <Hexagon/>
-                })}
-            </div>
-        )
-    }
-}
-
-const buildHexagonLayout = (masterMatrix) => {
-
-    const height = masterMatrix.length, width = masterMatrix[0].length;
-
-    for (let i = 0; i < height; i++) {
-        for (let q = 0; q < width; q++) {
-            if (masterMatrix[i][q] === 0) {
-            }
-        }
-    }
-
 };
 
 /**
