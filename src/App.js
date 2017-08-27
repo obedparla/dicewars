@@ -50,8 +50,8 @@ class App extends Component {
     }
 
     render() {
-        const {masterMatrix, sectionHovered, sectionClicked} = this.state;
-
+        const {masterMatrix, sectionHovered, sectionClicked, sectionsObject} = this.state;
+        const addedTowerValues = [];
         return (
             <div>
                 {   masterMatrix.map((row, index) => {
@@ -60,6 +60,7 @@ class App extends Component {
                             'hexagon-row',
                             {'even': index % 2 === 0}
                         );
+
 
                         return <div className={hexagonContClass}>{
                             row.map((sectionID, index) => {
@@ -71,8 +72,16 @@ class App extends Component {
                                     {"hovered-section": sectionHovered === sectionID},
                                     {"clicked-section": sectionClicked === sectionID},
                                 );
+
+                                let children = "";
+
+                                if (addedTowerValues.indexOf(sectionsObject[sectionID]) === -1) {
+                                    addedTowerValues.push(sectionsObject[sectionID]);
+                                    children = sectionsObject[sectionID].towersValue;
+                                }
+
                                 return <Hexagon key={sectionID + "" + index} classNam={hexagonClass} onClick={() => this.selectSection(sectionID)}
-                                                onMouseOver={() => this.highlightSection(sectionID)}/>
+                                                onMouseOver={() => this.highlightSection(sectionID)} children={children}/>
                             })}
                         </div>
                     }
@@ -83,9 +92,21 @@ class App extends Component {
 }
 
 
-const Hexagon = ({classNam, onMouseOver, onClick}) => {
+const Hexagon = ({classNam, onMouseOver, onClick, children}) => {
     return (
         <div className={classNam} onMouseOver={onMouseOver} onClick={onClick}>
+            <div className="children">{children}</div>
+            <div className="top"></div>
+            <div className="middle"></div>
+            <div className="bottom"></div>
+        </div>
+    )
+};
+
+const HexagonSimple = ({children}) => {
+    return (
+        <div>
+            <div className="children">{children}</div>
             <div className="top"></div>
             <div className="middle"></div>
             <div className="bottom"></div>
@@ -103,12 +124,12 @@ const Hexagon = ({classNam, onMouseOver, onClick}) => {
  */
 const checkAllowedHover = (sectionPositions, masterMatrix, sectionClicked) => {
     // console.log(sectionPositions);
-    const maxQ = masterMatrix[0].length-1,
-          maxI = masterMatrix.length-1
+    const maxQ = masterMatrix[0].length - 1,
+        maxI = masterMatrix.length - 1
     ;
 
     // Go through all the section positions.
-    for(let pos = 0; pos < Object.keys(sectionPositions).length; pos++){
+    for (let pos = 0; pos < Object.keys(sectionPositions).length; pos++) {
         let {i, q} = sectionPositions[pos];
 
         // console.log("i-1: " + masterMatrix[i === 0 ? 0 : i-1][q]);
@@ -118,8 +139,8 @@ const checkAllowedHover = (sectionPositions, masterMatrix, sectionClicked) => {
 
         // Check top top, bottom, left and right positions to see if current element is adjacent to clicked section
         // Doing a ternary operation on each to make sure we're not going outside the boundaries of the matrix.
-        if (masterMatrix[i === 0 ? 0 : i-1][q] === sectionClicked || masterMatrix[i === maxI ? maxI : i+1][q] === sectionClicked ||
-            masterMatrix[i][q === 0 ? 0 : q-1] === sectionClicked || masterMatrix[i][q === maxQ ? maxQ : q+1] === sectionClicked) {
+        if (masterMatrix[i === 0 ? 0 : i - 1][q] === sectionClicked || masterMatrix[i === maxI ? maxI : i + 1][q] === sectionClicked ||
+            masterMatrix[i][q === 0 ? 0 : q - 1] === sectionClicked || masterMatrix[i][q === maxQ ? maxQ : q + 1] === sectionClicked) {
             return true
         }
     }
