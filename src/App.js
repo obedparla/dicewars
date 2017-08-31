@@ -16,6 +16,7 @@ class App extends Component {
         this.highlightSection = this.highlightSection.bind(this);
         this.selectSection = this.selectSection.bind(this);
         this.checkAllowedHover = this.checkAllowedHover.bind(this);
+        this.conquerNewSection = this.conquerNewSection.bind(this);
     }
 
     componentDidMount() {
@@ -74,15 +75,35 @@ class App extends Component {
 
     selectSection(sectionID) {
         this.setState((prevState) => {
-            const {sectionClicked} = prevState;
+            const {sectionClicked, sectionHovered} = prevState;
 
             if (sectionClicked === sectionID)
                 return {sectionClicked: 0};
+            else if (sectionClicked !== 0 && sectionID === sectionHovered){
+                this.conquerNewSection(sectionID);
+                return {sectionClicked: 0}
+            }
             else
                 return {sectionClicked: sectionID};
         });
     }
 
+    conquerNewSection(sectionID){
+        const {sectionClicked, sectionsObject, masterMatrix} = this.state;
+
+        let auxMatrix = masterMatrix;
+
+        for (let index in sectionsObject[sectionID].positions){
+           const {i, q} =  sectionsObject[sectionID].positions[index];
+
+            auxMatrix[i][q] = sectionClicked;
+
+        }
+
+        sectionsObject[sectionID] = sectionClicked;
+
+        this.setState({masterMatrix: auxMatrix});
+    }
 
     render() {
         const {masterMatrix, sectionHovered, sectionClicked, sectionsObject} = this.state;
@@ -196,8 +217,10 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
         sectionsObject[currentPlayerID].positions = {};
 
         counter++;
-        if (counter === 100) {
-            // console.log(masterMatrix);
+
+        //In case something goes wrong and the loop never ends
+        if (counter === 1000) {
+            console.log("Error: populate map overflow")
             return false;
         }
 
