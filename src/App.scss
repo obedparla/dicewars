@@ -33,15 +33,14 @@ $clicked-color: #59ff50;
 
   &.team-1 {
 
-    @for $i from 1 through 25 {
+    @for $i from 1 through 50 {
       &.group-#{$i} {
-        $percentage: 4*$i;
+        $percentage: 2*$i;
         $modified-team1-color: $team1-color;
-        @if $i < 11 {
+        @if $i < 30 {
           $modified-team1-color: darken($team1-color, $percentage);
 
         }@else{
-          $percentage: 4*$i - 40;
           $modified-team1-color: lighten($team1-color, $percentage);
         }
         .top {
@@ -91,13 +90,12 @@ $clicked-color: #59ff50;
 
     @for $i from 1 through 50 {
       &.group-#{$i} {
-        $percentage: 4*$i;
+        $percentage: 1.5*$i;
         $modified-team2-color: $team2-color;
-        @if $i < 25{
+        @if $i < 30{
           $modified-team2-color: darken($team2-color, $percentage);
 
         }@else{
-          $percentage: 4*$i - 100;
           $modified-team2-color: lighten($team2-color, $percentage);
         }
         .top {

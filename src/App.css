@@ -21,154 +21,304 @@
     .hexagon .children:empty {
       background: transparent; }
   .hexagon.team-1.group-1 .top {
-    border-bottom-color: #ff129d; }
+    border-bottom-color: #ff1ca1; }
   .hexagon.team-1.group-1 .middle {
-    background: #ff129d; }
+    background: #ff1ca1; }
   .hexagon.team-1.group-1 .bottom {
-    border-top-color: #ff129d; }
+    border-top-color: #ff1ca1; }
   .hexagon.team-1.group-2 .top {
-    border-bottom-color: #fc0094; }
+    border-bottom-color: #ff129d; }
   .hexagon.team-1.group-2 .middle {
-    background: #fc0094; }
+    background: #ff129d; }
   .hexagon.team-1.group-2 .bottom {
-    border-top-color: #fc0094; }
+    border-top-color: #ff129d; }
   .hexagon.team-1.group-3 .top {
-    border-bottom-color: #e80088; }
+    border-bottom-color: #ff0798; }
   .hexagon.team-1.group-3 .middle {
-    background: #e80088; }
+    background: #ff0798; }
   .hexagon.team-1.group-3 .bottom {
-    border-top-color: #e80088; }
+    border-top-color: #ff0798; }
   .hexagon.team-1.group-4 .top {
-    border-bottom-color: #d3007c; }
+    border-bottom-color: #fc0094; }
   .hexagon.team-1.group-4 .middle {
-    background: #d3007c; }
+    background: #fc0094; }
   .hexagon.team-1.group-4 .bottom {
-    border-top-color: #d3007c; }
+    border-top-color: #fc0094; }
   .hexagon.team-1.group-5 .top {
-    border-bottom-color: #bf0070; }
+    border-bottom-color: #f2008e; }
   .hexagon.team-1.group-5 .middle {
-    background: #bf0070; }
+    background: #f2008e; }
   .hexagon.team-1.group-5 .bottom {
-    border-top-color: #bf0070; }
+    border-top-color: #f2008e; }
   .hexagon.team-1.group-6 .top {
-    border-bottom-color: #ab0064; }
+    border-bottom-color: #e80088; }
   .hexagon.team-1.group-6 .middle {
-    background: #ab0064; }
+    background: #e80088; }
   .hexagon.team-1.group-6 .bottom {
-    border-top-color: #ab0064; }
+    border-top-color: #e80088; }
   .hexagon.team-1.group-7 .top {
-    border-bottom-color: #960058; }
+    border-bottom-color: #de0082; }
   .hexagon.team-1.group-7 .middle {
-    background: #960058; }
+    background: #de0082; }
   .hexagon.team-1.group-7 .bottom {
-    border-top-color: #960058; }
+    border-top-color: #de0082; }
   .hexagon.team-1.group-8 .top {
-    border-bottom-color: #82004c; }
+    border-bottom-color: #d3007c; }
   .hexagon.team-1.group-8 .middle {
-    background: #82004c; }
+    background: #d3007c; }
   .hexagon.team-1.group-8 .bottom {
-    border-top-color: #82004c; }
+    border-top-color: #d3007c; }
   .hexagon.team-1.group-9 .top {
-    border-bottom-color: #6d0040; }
+    border-bottom-color: #c90076; }
   .hexagon.team-1.group-9 .middle {
-    background: #6d0040; }
+    background: #c90076; }
   .hexagon.team-1.group-9 .bottom {
-    border-top-color: #6d0040; }
+    border-top-color: #c90076; }
   .hexagon.team-1.group-10 .top {
-    border-bottom-color: #590034; }
+    border-bottom-color: #bf0070; }
   .hexagon.team-1.group-10 .middle {
-    background: #590034; }
+    background: #bf0070; }
   .hexagon.team-1.group-10 .bottom {
-    border-top-color: #590034; }
+    border-top-color: #bf0070; }
   .hexagon.team-1.group-11 .top {
-    border-bottom-color: #ff3aad; }
+    border-bottom-color: #b5006a; }
   .hexagon.team-1.group-11 .middle {
-    background: #ff3aad; }
+    background: #b5006a; }
   .hexagon.team-1.group-11 .bottom {
-    border-top-color: #ff3aad; }
+    border-top-color: #b5006a; }
   .hexagon.team-1.group-12 .top {
-    border-bottom-color: #ff4fb6; }
+    border-bottom-color: #ab0064; }
   .hexagon.team-1.group-12 .middle {
-    background: #ff4fb6; }
+    background: #ab0064; }
   .hexagon.team-1.group-12 .bottom {
-    border-top-color: #ff4fb6; }
+    border-top-color: #ab0064; }
   .hexagon.team-1.group-13 .top {
-    border-bottom-color: #ff63be; }
+    border-bottom-color: #a0005e; }
   .hexagon.team-1.group-13 .middle {
-    background: #ff63be; }
+    background: #a0005e; }
   .hexagon.team-1.group-13 .bottom {
-    border-top-color: #ff63be; }
+    border-top-color: #a0005e; }
   .hexagon.team-1.group-14 .top {
-    border-bottom-color: #ff78c7; }
+    border-bottom-color: #960058; }
   .hexagon.team-1.group-14 .middle {
-    background: #ff78c7; }
+    background: #960058; }
   .hexagon.team-1.group-14 .bottom {
-    border-top-color: #ff78c7; }
+    border-top-color: #960058; }
   .hexagon.team-1.group-15 .top {
-    border-bottom-color: #ff8ccf; }
+    border-bottom-color: #8c0052; }
   .hexagon.team-1.group-15 .middle {
-    background: #ff8ccf; }
+    background: #8c0052; }
   .hexagon.team-1.group-15 .bottom {
-    border-top-color: #ff8ccf; }
+    border-top-color: #8c0052; }
   .hexagon.team-1.group-16 .top {
-    border-bottom-color: #ffa0d8; }
+    border-bottom-color: #82004c; }
   .hexagon.team-1.group-16 .middle {
-    background: #ffa0d8; }
+    background: #82004c; }
   .hexagon.team-1.group-16 .bottom {
-    border-top-color: #ffa0d8; }
+    border-top-color: #82004c; }
   .hexagon.team-1.group-17 .top {
-    border-bottom-color: #ffb5e0; }
+    border-bottom-color: #780046; }
   .hexagon.team-1.group-17 .middle {
-    background: #ffb5e0; }
+    background: #780046; }
   .hexagon.team-1.group-17 .bottom {
-    border-top-color: #ffb5e0; }
+    border-top-color: #780046; }
   .hexagon.team-1.group-18 .top {
-    border-bottom-color: #ffc9e9; }
+    border-bottom-color: #6d0040; }
   .hexagon.team-1.group-18 .middle {
-    background: #ffc9e9; }
+    background: #6d0040; }
   .hexagon.team-1.group-18 .bottom {
-    border-top-color: #ffc9e9; }
+    border-top-color: #6d0040; }
   .hexagon.team-1.group-19 .top {
-    border-bottom-color: #ffdef1; }
+    border-bottom-color: #63003a; }
   .hexagon.team-1.group-19 .middle {
-    background: #ffdef1; }
+    background: #63003a; }
   .hexagon.team-1.group-19 .bottom {
-    border-top-color: #ffdef1; }
+    border-top-color: #63003a; }
   .hexagon.team-1.group-20 .top {
-    border-bottom-color: #fff2fa; }
+    border-bottom-color: #590034; }
   .hexagon.team-1.group-20 .middle {
-    background: #fff2fa; }
+    background: #590034; }
   .hexagon.team-1.group-20 .bottom {
-    border-top-color: #fff2fa; }
+    border-top-color: #590034; }
   .hexagon.team-1.group-21 .top {
-    border-bottom-color: white; }
+    border-bottom-color: #4f002e; }
   .hexagon.team-1.group-21 .middle {
-    background: white; }
+    background: #4f002e; }
   .hexagon.team-1.group-21 .bottom {
-    border-top-color: white; }
+    border-top-color: #4f002e; }
   .hexagon.team-1.group-22 .top {
-    border-bottom-color: white; }
+    border-bottom-color: #450028; }
   .hexagon.team-1.group-22 .middle {
-    background: white; }
+    background: #450028; }
   .hexagon.team-1.group-22 .bottom {
-    border-top-color: white; }
+    border-top-color: #450028; }
   .hexagon.team-1.group-23 .top {
-    border-bottom-color: white; }
+    border-bottom-color: #3a0022; }
   .hexagon.team-1.group-23 .middle {
-    background: white; }
+    background: #3a0022; }
   .hexagon.team-1.group-23 .bottom {
-    border-top-color: white; }
+    border-top-color: #3a0022; }
   .hexagon.team-1.group-24 .top {
-    border-bottom-color: white; }
+    border-bottom-color: #30001c; }
   .hexagon.team-1.group-24 .middle {
-    background: white; }
+    background: #30001c; }
   .hexagon.team-1.group-24 .bottom {
-    border-top-color: white; }
+    border-top-color: #30001c; }
   .hexagon.team-1.group-25 .top {
-    border-bottom-color: white; }
+    border-bottom-color: #260016; }
   .hexagon.team-1.group-25 .middle {
-    background: white; }
+    background: #260016; }
   .hexagon.team-1.group-25 .bottom {
+    border-top-color: #260016; }
+  .hexagon.team-1.group-26 .top {
+    border-bottom-color: #1c0010; }
+  .hexagon.team-1.group-26 .middle {
+    background: #1c0010; }
+  .hexagon.team-1.group-26 .bottom {
+    border-top-color: #1c0010; }
+  .hexagon.team-1.group-27 .top {
+    border-bottom-color: #12000a; }
+  .hexagon.team-1.group-27 .middle {
+    background: #12000a; }
+  .hexagon.team-1.group-27 .bottom {
+    border-top-color: #12000a; }
+  .hexagon.team-1.group-28 .top {
+    border-bottom-color: #070004; }
+  .hexagon.team-1.group-28 .middle {
+    background: #070004; }
+  .hexagon.team-1.group-28 .bottom {
+    border-top-color: #070004; }
+  .hexagon.team-1.group-29 .top {
+    border-bottom-color: black; }
+  .hexagon.team-1.group-29 .middle {
+    background: black; }
+  .hexagon.team-1.group-29 .bottom {
+    border-top-color: black; }
+  .hexagon.team-1.group-30 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-30 .middle {
+    background: white; }
+  .hexagon.team-1.group-30 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-31 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-31 .middle {
+    background: white; }
+  .hexagon.team-1.group-31 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-32 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-32 .middle {
+    background: white; }
+  .hexagon.team-1.group-32 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-33 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-33 .middle {
+    background: white; }
+  .hexagon.team-1.group-33 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-34 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-34 .middle {
+    background: white; }
+  .hexagon.team-1.group-34 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-35 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-35 .middle {
+    background: white; }
+  .hexagon.team-1.group-35 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-36 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-36 .middle {
+    background: white; }
+  .hexagon.team-1.group-36 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-37 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-37 .middle {
+    background: white; }
+  .hexagon.team-1.group-37 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-38 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-38 .middle {
+    background: white; }
+  .hexagon.team-1.group-38 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-39 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-39 .middle {
+    background: white; }
+  .hexagon.team-1.group-39 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-40 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-40 .middle {
+    background: white; }
+  .hexagon.team-1.group-40 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-41 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-41 .middle {
+    background: white; }
+  .hexagon.team-1.group-41 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-42 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-42 .middle {
+    background: white; }
+  .hexagon.team-1.group-42 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-43 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-43 .middle {
+    background: white; }
+  .hexagon.team-1.group-43 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-44 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-44 .middle {
+    background: white; }
+  .hexagon.team-1.group-44 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-45 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-45 .middle {
+    background: white; }
+  .hexagon.team-1.group-45 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-46 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-46 .middle {
+    background: white; }
+  .hexagon.team-1.group-46 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-47 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-47 .middle {
+    background: white; }
+  .hexagon.team-1.group-47 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-48 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-48 .middle {
+    background: white; }
+  .hexagon.team-1.group-48 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-49 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-49 .middle {
+    background: white; }
+  .hexagon.team-1.group-49 .bottom {
+    border-top-color: white; }
+  .hexagon.team-1.group-50 .top {
+    border-bottom-color: white; }
+  .hexagon.team-1.group-50 .middle {
+    background: white; }
+  .hexagon.team-1.group-50 .bottom {
     border-top-color: white; }
   .hexagon.team-1.hovered-section .top {
     border-bottom-color: #fff44d; }
@@ -183,203 +333,203 @@
   .hexagon.team-1.clicked-section .bottom {
     border-top-color: #59ff50; }
   .hexagon.team-2.group-1 .top {
-    border-bottom-color: #355dff; }
+    border-bottom-color: #4167ff; }
   .hexagon.team-2.group-1 .middle {
-    background: #355dff; }
+    background: #4167ff; }
   .hexagon.team-2.group-1 .bottom {
-    border-top-color: #355dff; }
+    border-top-color: #4167ff; }
   .hexagon.team-2.group-2 .top {
-    border-bottom-color: #204cff; }
+    border-bottom-color: #3a61ff; }
   .hexagon.team-2.group-2 .middle {
-    background: #204cff; }
+    background: #3a61ff; }
   .hexagon.team-2.group-2 .bottom {
-    border-top-color: #204cff; }
+    border-top-color: #3a61ff; }
   .hexagon.team-2.group-3 .top {
-    border-bottom-color: #0c3cff; }
+    border-bottom-color: #325bff; }
   .hexagon.team-2.group-3 .middle {
-    background: #0c3cff; }
+    background: #325bff; }
   .hexagon.team-2.group-3 .bottom {
-    border-top-color: #0c3cff; }
+    border-top-color: #325bff; }
   .hexagon.team-2.group-4 .top {
-    border-bottom-color: #0031f6; }
+    border-bottom-color: #2a54ff; }
   .hexagon.team-2.group-4 .middle {
-    background: #0031f6; }
+    background: #2a54ff; }
   .hexagon.team-2.group-4 .bottom {
-    border-top-color: #0031f6; }
+    border-top-color: #2a54ff; }
   .hexagon.team-2.group-5 .top {
-    border-bottom-color: #002de2; }
+    border-bottom-color: #234eff; }
   .hexagon.team-2.group-5 .middle {
-    background: #002de2; }
+    background: #234eff; }
   .hexagon.team-2.group-5 .bottom {
-    border-top-color: #002de2; }
+    border-top-color: #234eff; }
   .hexagon.team-2.group-6 .top {
-    border-bottom-color: #0029ce; }
+    border-bottom-color: #1b48ff; }
   .hexagon.team-2.group-6 .middle {
-    background: #0029ce; }
+    background: #1b48ff; }
   .hexagon.team-2.group-6 .bottom {
-    border-top-color: #0029ce; }
+    border-top-color: #1b48ff; }
   .hexagon.team-2.group-7 .top {
-    border-bottom-color: #0025b9; }
+    border-bottom-color: #1342ff; }
   .hexagon.team-2.group-7 .middle {
-    background: #0025b9; }
+    background: #1342ff; }
   .hexagon.team-2.group-7 .bottom {
-    border-top-color: #0025b9; }
+    border-top-color: #1342ff; }
   .hexagon.team-2.group-8 .top {
-    border-bottom-color: #0021a5; }
+    border-bottom-color: #0c3cff; }
   .hexagon.team-2.group-8 .middle {
-    background: #0021a5; }
+    background: #0c3cff; }
   .hexagon.team-2.group-8 .bottom {
-    border-top-color: #0021a5; }
+    border-top-color: #0c3cff; }
   .hexagon.team-2.group-9 .top {
-    border-bottom-color: #001d90; }
+    border-bottom-color: #0436ff; }
   .hexagon.team-2.group-9 .middle {
-    background: #001d90; }
+    background: #0436ff; }
   .hexagon.team-2.group-9 .bottom {
-    border-top-color: #001d90; }
+    border-top-color: #0436ff; }
   .hexagon.team-2.group-10 .top {
-    border-bottom-color: #00197c; }
+    border-bottom-color: #0032fc; }
   .hexagon.team-2.group-10 .middle {
-    background: #00197c; }
+    background: #0032fc; }
   .hexagon.team-2.group-10 .bottom {
-    border-top-color: #00197c; }
+    border-top-color: #0032fc; }
   .hexagon.team-2.group-11 .top {
-    border-bottom-color: #001468; }
+    border-bottom-color: #0030f4; }
   .hexagon.team-2.group-11 .middle {
-    background: #001468; }
+    background: #0030f4; }
   .hexagon.team-2.group-11 .bottom {
-    border-top-color: #001468; }
+    border-top-color: #0030f4; }
   .hexagon.team-2.group-12 .top {
-    border-bottom-color: #001053; }
+    border-bottom-color: #002fec; }
   .hexagon.team-2.group-12 .middle {
-    background: #001053; }
+    background: #002fec; }
   .hexagon.team-2.group-12 .bottom {
-    border-top-color: #001053; }
+    border-top-color: #002fec; }
   .hexagon.team-2.group-13 .top {
-    border-bottom-color: #000c3f; }
+    border-bottom-color: #002de5; }
   .hexagon.team-2.group-13 .middle {
-    background: #000c3f; }
+    background: #002de5; }
   .hexagon.team-2.group-13 .bottom {
-    border-top-color: #000c3f; }
+    border-top-color: #002de5; }
   .hexagon.team-2.group-14 .top {
-    border-bottom-color: #00082a; }
+    border-bottom-color: #002cdd; }
   .hexagon.team-2.group-14 .middle {
-    background: #00082a; }
+    background: #002cdd; }
   .hexagon.team-2.group-14 .bottom {
-    border-top-color: #00082a; }
+    border-top-color: #002cdd; }
   .hexagon.team-2.group-15 .top {
-    border-bottom-color: #000416; }
+    border-bottom-color: #002ad5; }
   .hexagon.team-2.group-15 .middle {
-    background: #000416; }
+    background: #002ad5; }
   .hexagon.team-2.group-15 .bottom {
-    border-top-color: #000416; }
+    border-top-color: #002ad5; }
   .hexagon.team-2.group-16 .top {
-    border-bottom-color: #000002; }
+    border-bottom-color: #0029ce; }
   .hexagon.team-2.group-16 .middle {
-    background: #000002; }
+    background: #0029ce; }
   .hexagon.team-2.group-16 .bottom {
-    border-top-color: #000002; }
+    border-top-color: #0029ce; }
   .hexagon.team-2.group-17 .top {
-    border-bottom-color: black; }
+    border-bottom-color: #0027c6; }
   .hexagon.team-2.group-17 .middle {
-    background: black; }
+    background: #0027c6; }
   .hexagon.team-2.group-17 .bottom {
-    border-top-color: black; }
+    border-top-color: #0027c6; }
   .hexagon.team-2.group-18 .top {
-    border-bottom-color: black; }
+    border-bottom-color: #0026be; }
   .hexagon.team-2.group-18 .middle {
-    background: black; }
+    background: #0026be; }
   .hexagon.team-2.group-18 .bottom {
-    border-top-color: black; }
+    border-top-color: #0026be; }
   .hexagon.team-2.group-19 .top {
-    border-bottom-color: black; }
+    border-bottom-color: #0024b7; }
   .hexagon.team-2.group-19 .middle {
-    background: black; }
+    background: #0024b7; }
   .hexagon.team-2.group-19 .bottom {
-    border-top-color: black; }
+    border-top-color: #0024b7; }
   .hexagon.team-2.group-20 .top {
-    border-bottom-color: black; }
+    border-bottom-color: #0023af; }
   .hexagon.team-2.group-20 .middle {
-    background: black; }
+    background: #0023af; }
   .hexagon.team-2.group-20 .bottom {
-    border-top-color: black; }
+    border-top-color: #0023af; }
   .hexagon.team-2.group-21 .top {
-    border-bottom-color: black; }
+    border-bottom-color: #0021a7; }
   .hexagon.team-2.group-21 .middle {
-    background: black; }
+    background: #0021a7; }
   .hexagon.team-2.group-21 .bottom {
-    border-top-color: black; }
+    border-top-color: #0021a7; }
   .hexagon.team-2.group-22 .top {
-    border-bottom-color: black; }
+    border-bottom-color: #0020a0; }
   .hexagon.team-2.group-22 .middle {
-    background: black; }
+    background: #0020a0; }
   .hexagon.team-2.group-22 .bottom {
-    border-top-color: black; }
+    border-top-color: #0020a0; }
   .hexagon.team-2.group-23 .top {
-    border-bottom-color: black; }
+    border-bottom-color: #001e98; }
   .hexagon.team-2.group-23 .middle {
-    background: black; }
+    background: #001e98; }
   .hexagon.team-2.group-23 .bottom {
-    border-top-color: black; }
+    border-top-color: #001e98; }
   .hexagon.team-2.group-24 .top {
-    border-bottom-color: black; }
+    border-bottom-color: #001d90; }
   .hexagon.team-2.group-24 .middle {
-    background: black; }
+    background: #001d90; }
   .hexagon.team-2.group-24 .bottom {
-    border-top-color: black; }
+    border-top-color: #001d90; }
   .hexagon.team-2.group-25 .top {
-    border-bottom-color: #496dff; }
+    border-bottom-color: #001b89; }
   .hexagon.team-2.group-25 .middle {
-    background: #496dff; }
+    background: #001b89; }
   .hexagon.team-2.group-25 .bottom {
-    border-top-color: #496dff; }
+    border-top-color: #001b89; }
   .hexagon.team-2.group-26 .top {
-    border-bottom-color: #5d7dff; }
+    border-bottom-color: #001a81; }
   .hexagon.team-2.group-26 .middle {
-    background: #5d7dff; }
+    background: #001a81; }
   .hexagon.team-2.group-26 .bottom {
-    border-top-color: #5d7dff; }
+    border-top-color: #001a81; }
   .hexagon.team-2.group-27 .top {
-    border-bottom-color: #728eff; }
+    border-bottom-color: #001879; }
   .hexagon.team-2.group-27 .middle {
-    background: #728eff; }
+    background: #001879; }
   .hexagon.team-2.group-27 .bottom {
-    border-top-color: #728eff; }
+    border-top-color: #001879; }
   .hexagon.team-2.group-28 .top {
-    border-bottom-color: #869eff; }
+    border-bottom-color: #001772; }
   .hexagon.team-2.group-28 .middle {
-    background: #869eff; }
+    background: #001772; }
   .hexagon.team-2.group-28 .bottom {
-    border-top-color: #869eff; }
+    border-top-color: #001772; }
   .hexagon.team-2.group-29 .top {
-    border-bottom-color: #9baeff; }
+    border-bottom-color: #00156a; }
   .hexagon.team-2.group-29 .middle {
-    background: #9baeff; }
+    background: #00156a; }
   .hexagon.team-2.group-29 .bottom {
-    border-top-color: #9baeff; }
+    border-top-color: #00156a; }
   .hexagon.team-2.group-30 .top {
-    border-bottom-color: #afbfff; }
+    border-bottom-color: white; }
   .hexagon.team-2.group-30 .middle {
-    background: #afbfff; }
+    background: white; }
   .hexagon.team-2.group-30 .bottom {
-    border-top-color: #afbfff; }
+    border-top-color: white; }
   .hexagon.team-2.group-31 .top {
-    border-bottom-color: #c3cfff; }
+    border-bottom-color: white; }
   .hexagon.team-2.group-31 .middle {
-    background: #c3cfff; }
+    background: white; }
   .hexagon.team-2.group-31 .bottom {
-    border-top-color: #c3cfff; }
+    border-top-color: white; }
   .hexagon.team-2.group-32 .top {
-    border-bottom-color: #d8e0ff; }
+    border-bottom-color: white; }
   .hexagon.team-2.group-32 .middle {
-    background: #d8e0ff; }
+    background: white; }
   .hexagon.team-2.group-32 .bottom {
-    border-top-color: #d8e0ff; }
+    border-top-color: white; }
   .hexagon.team-2.group-33 .top {
-    border-bottom-color: #ecf0ff; }
+    border-bottom-color: white; }
   .hexagon.team-2.group-33 .middle {
-    background: #ecf0ff; }
+    background: white; }
   .hexagon.team-2.group-33 .bottom {
-    border-top-color: #ecf0ff; }
+    border-top-color: white; }
   .hexagon.team-2.group-34 .top {
     border-bottom-color: white; }
   .hexagon.team-2.group-34 .middle {
