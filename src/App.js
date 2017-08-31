@@ -21,7 +21,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        const populatedInfo = populateMap(10, 10);
+        const populatedInfo = populateMap(33, 18);
         this.setState({masterMatrix: populatedInfo[0], sectionsObject: populatedInfo[1]});
     }
 
@@ -93,9 +93,7 @@ class App extends Component {
         const {sectionsObject, masterMatrix, sectionClicked} = this.state,
             changedTeam = changeTeam(sectionID);
 
-        // Roll the dices.
-
-        // The challenger won
+        // Roll the dices, challenger wins returns true.
         if (this.rollDices(sectionID)) {
 
             // Change the values of the matrix.
