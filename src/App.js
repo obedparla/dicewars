@@ -15,11 +15,45 @@ class App extends Component {
         };
         this.highlightSection = this.highlightSection.bind(this);
         this.selectSection = this.selectSection.bind(this);
+        this.checkAllowedHover = this.checkAllowedHover.bind(this);
     }
 
     componentDidMount() {
         const populatedInfo = populateMap(10, 10);
         this.setState({masterMatrix: populatedInfo[0], sectionsObject: populatedInfo[1]});
+    }
+
+    // * Check if the current section is adjacent to the clicked section.
+    checkAllowedHover(sectionID, sectionPositions){
+        const {masterMatrix, sectionClicked, sectionHovered} = this.state;
+        // console.log(sectionPositions);
+        const maxQ = masterMatrix[0].length - 1,
+            maxI = masterMatrix.length - 1
+        ;
+
+        // Check that hovered section belongs to the opposite team
+        if(getPlayerID(sectionID) === getPlayerID(sectionClicked)) {
+            return false;
+        }
+
+        // Go through all the section positions.
+        for (let pos = 0; pos < Object.keys(sectionPositions).length; pos++) {
+            let {i, q} = sectionPositions[pos];
+
+            // console.log("i-1: " + masterMatrix[i === 0 ? 0 : i-1][q]);
+            // console.log("i+1: " + masterMatrix[i === maxI ? maxI : i+1][q]);
+            // console.log("q+1: " + masterMatrix[i][masterMatrix[q === maxQ ? maxQ : q+1]]);
+            // console.log("q-1 " + masterMatrix[i][q === 0 ? 0 : q-1][q]);
+
+                // Check top top, bottom, left and right positions to see if current element is adjacent to clicked section
+                // Doing a ternary operation on each to make sure we're not going outside the boundaries of the matrix.
+                if (masterMatrix[i === 0 ? 0 : i - 1][q] === sectionClicked || masterMatrix[i === maxI ? maxI : i + 1][q] === sectionClicked ||
+                    masterMatrix[i][q === 0 ? 0 : q - 1] === sectionClicked || masterMatrix[i][q === maxQ ? maxQ : q + 1] === sectionClicked) {
+                    return true
+                }
+        }
+
+        return false;
     }
 
 
@@ -29,7 +63,7 @@ class App extends Component {
 
             // If there's no section clicked or the hover is allowed (when a section is clicked)
             // console.log(sectionsObject[sectionID].positions);
-            if (sectionClicked === 0 || checkAllowedHover(sectionsObject[sectionID].positions, masterMatrix, sectionClicked)) {
+            if (sectionClicked === 0 || this.checkAllowedHover(sectionID, sectionsObject[sectionID].positions)) {
                 return {sectionHovered: sectionID}
             } else {
                 return {sectionHovered: 0}
@@ -48,6 +82,7 @@ class App extends Component {
                 return {sectionClicked: sectionID};
         });
     }
+
 
     render() {
         const {masterMatrix, sectionHovered, sectionClicked, sectionsObject} = this.state;
@@ -114,40 +149,6 @@ const HexagonSimple = ({children}) => {
     )
 };
 
-/**
- * Check if the current section is adjacent to the clicked section.
- *
- * @param sectionPositions
- * @param masterMatrix
- * @param sectionClicked
- * @returns {boolean}
- */
-const checkAllowedHover = (sectionPositions, masterMatrix, sectionClicked) => {
-    // console.log(sectionPositions);
-    const maxQ = masterMatrix[0].length - 1,
-        maxI = masterMatrix.length - 1
-    ;
-
-    // Go through all the section positions.
-    for (let pos = 0; pos < Object.keys(sectionPositions).length; pos++) {
-        let {i, q} = sectionPositions[pos];
-
-        // console.log("i-1: " + masterMatrix[i === 0 ? 0 : i-1][q]);
-        // console.log("i+1: " + masterMatrix[i === maxI ? maxI : i+1][q]);
-        // console.log("q+1: " + masterMatrix[i][masterMatrix[q === maxQ ? maxQ : q+1]]);
-        // console.log("q-1 " + masterMatrix[i][q === 0 ? 0 : q-1][q]);
-
-        // Check top top, bottom, left and right positions to see if current element is adjacent to clicked section
-        // Doing a ternary operation on each to make sure we're not going outside the boundaries of the matrix.
-        if (masterMatrix[i === 0 ? 0 : i - 1][q] === sectionClicked || masterMatrix[i === maxI ? maxI : i + 1][q] === sectionClicked ||
-            masterMatrix[i][q === 0 ? 0 : q - 1] === sectionClicked || masterMatrix[i][q === maxQ ? maxQ : q + 1] === sectionClicked) {
-            return true
-        }
-    }
-
-    return false;
-};
-
 const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -161,7 +162,7 @@ const checkSpaceLeftMatrix = (matrix) => {
         for (let q = 0; q < width; q++) {
             if (matrix[i][q] === 0) {
                 return true;
-            }
+             }
         }
     }
 
