@@ -90,19 +90,19 @@ class App extends Component {
 
     conquerNewSection(sectionID){
         const {sectionClicked, sectionsObject, masterMatrix} = this.state;
+        const changedTeam = changeTeam(sectionID);
 
-        let auxMatrix = masterMatrix;
 
         for (let index in sectionsObject[sectionID].positions){
            const {i, q} =  sectionsObject[sectionID].positions[index];
 
-            auxMatrix[i][q] = sectionClicked;
-
+            masterMatrix[i][q] = changedTeam;
         }
 
-        sectionsObject[sectionID] = sectionClicked;
+        sectionsObject[changedTeam] = sectionsObject[sectionID];
+        delete sectionsObject[sectionID];
 
-        this.setState({masterMatrix: auxMatrix});
+        this.setState({masterMatrix: masterMatrix, sectionsObject: sectionsObject});
     }
 
     render() {
@@ -147,6 +147,12 @@ class App extends Component {
     }
 }
 
+const changeTeam = (sectionID) =>{
+    const newSectionID = "" + sectionID;
+    const newID = newSectionID[0] === "1" ? "2" : "1";
+
+    return newID + newSectionID.substr(1);
+};
 
 const Hexagon = ({classNam, onMouseOver, onClick, children}) => {
     return (
@@ -201,7 +207,7 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
     let playerOneID_counter = playerCounterMultiplier,
         playerTwoID_counter = 2 * playerCounterMultiplier;
 
-    let counter = 0;
+    let counter = 1;
     // Fill the matrix until there's no space left
     while (checkSpaceLeftMatrix(masterMatrix)) {
 
@@ -209,14 +215,13 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
             sectionHeight = getRandomInt(1, sectionMaxHeight)
         ;
 
-        const currentPlayerID = randPlayerID === 1 ? ++playerOneID_counter : ++playerTwoID_counter;
+        const currentPlayerID = randPlayerID === 1 ? (playerOneID_counter + counter) : (playerTwoID_counter + counter);
         let currentHeight = 0, sectionCounter = 0;
 
+        counter++;
         sectionsObject[currentPlayerID] = {};
         sectionsObject[currentPlayerID].towersValue = getRandomInt(1, 9);
         sectionsObject[currentPlayerID].positions = {};
-
-        counter++;
 
         //In case something goes wrong and the loop never ends
         if (counter === 1000) {
