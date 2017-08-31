@@ -17,6 +17,7 @@ class App extends Component {
         this.selectSection = this.selectSection.bind(this);
         this.checkAllowedHover = this.checkAllowedHover.bind(this);
         this.conquerNewSection = this.conquerNewSection.bind(this);
+        this.rollDices = this.rollDices.bind(this);
     }
 
     componentDidMount() {
@@ -25,7 +26,7 @@ class App extends Component {
     }
 
     // * Check if the current section is adjacent to the clicked section.
-    checkAllowedHover(sectionID, sectionPositions){
+    checkAllowedHover(sectionID, sectionPositions) {
         const {masterMatrix, sectionClicked, sectionHovered} = this.state;
         // console.log(sectionPositions);
         const maxQ = masterMatrix[0].length - 1,
@@ -33,7 +34,7 @@ class App extends Component {
         ;
 
         // Check that hovered section belongs to the opposite team
-        if(getPlayerID(sectionID) === getPlayerID(sectionClicked)) {
+        if (getPlayerID(sectionID) === getPlayerID(sectionClicked)) {
             return false;
         }
 
@@ -46,12 +47,12 @@ class App extends Component {
             // console.log("q+1: " + masterMatrix[i][masterMatrix[q === maxQ ? maxQ : q+1]]);
             // console.log("q-1 " + masterMatrix[i][q === 0 ? 0 : q-1][q]);
 
-                // Check top top, bottom, left and right positions to see if current element is adjacent to clicked section
-                // Doing a ternary operation on each to make sure we're not going outside the boundaries of the matrix.
-                if (masterMatrix[i === 0 ? 0 : i - 1][q] === sectionClicked || masterMatrix[i === maxI ? maxI : i + 1][q] === sectionClicked ||
-                    masterMatrix[i][q === 0 ? 0 : q - 1] === sectionClicked || masterMatrix[i][q === maxQ ? maxQ : q + 1] === sectionClicked) {
-                    return true
-                }
+            // Check top top, bottom, left and right positions to see if current element is adjacent to clicked section
+            // Doing a ternary operation on each to make sure we're not going outside the boundaries of the matrix.
+            if (masterMatrix[i === 0 ? 0 : i - 1][q] === sectionClicked || masterMatrix[i === maxI ? maxI : i + 1][q] === sectionClicked ||
+                masterMatrix[i][q === 0 ? 0 : q - 1] === sectionClicked || masterMatrix[i][q === maxQ ? maxQ : q + 1] === sectionClicked) {
+                return true
+            }
         }
 
         return false;
@@ -79,7 +80,7 @@ class App extends Component {
 
             if (sectionClicked === sectionID)
                 return {sectionClicked: 0};
-            else if (sectionClicked !== 0 && sectionID === sectionHovered){
+            else if (sectionClicked !== 0 && sectionID === sectionHovered) {
                 this.conquerNewSection(sectionID);
                 return {sectionClicked: 0}
             }
@@ -88,21 +89,47 @@ class App extends Component {
         });
     }
 
-    conquerNewSection(sectionID){
-        const {sectionClicked, sectionsObject, masterMatrix} = this.state;
-        const changedTeam = changeTeam(sectionID);
+    conquerNewSection(sectionID) {
+        const {sectionsObject, masterMatrix, sectionClicked} = this.state,
+            changedTeam = changeTeam(sectionID);
+
+        // Roll the dices.
+
+        // The challenger won
+        if (this.rollDices(sectionID)) {
+
+            // Change the values of the matrix.
+            for (let index in sectionsObject[sectionID].positions) {
+                const {i, q} = sectionsObject[sectionID].positions[index];
+                masterMatrix[i][q] = changedTeam;
+            }
+
+            // Add a new object with the new changedTeam ID, it must have the same properties as the previous one.
+            // Then delete the old ID.
+            sectionsObject[changedTeam] = sectionsObject[sectionID];
+            delete sectionsObject[sectionID];
+
+            // Attacker towers = 1 and attacked section = all of the attacker's - 1
+            sectionsObject[changedTeam].towersValue = sectionsObject[sectionClicked].towersValue -1;
+            sectionsObject[sectionClicked].towersValue = 1;
 
 
-        for (let index in sectionsObject[sectionID].positions){
-           const {i, q} =  sectionsObject[sectionID].positions[index];
-
-            masterMatrix[i][q] = changedTeam;
+            this.setState({masterMatrix: masterMatrix, sectionsObject: sectionsObject});
         }
+        else{
+            // The challenger lost, leave it with only 1 tower
+            sectionsObject[sectionClicked].towersValue = 1;
+            this.setState({sectionsObject: sectionsObject});
+        }
+    }
 
-        sectionsObject[changedTeam] = sectionsObject[sectionID];
-        delete sectionsObject[sectionID];
+    rollDices(sectionID) {
+        const {sectionClicked, sectionsObject} = this.state,
+            valueTeam1 = getRandomInt(1, sectionsObject[sectionClicked].towersValue * 10),
+            valueTeam2 = getRandomInt(1, sectionsObject[sectionID].towersValue * 10)
+        ;
 
-        this.setState({masterMatrix: masterMatrix, sectionsObject: sectionsObject});
+        return valueTeam1 > valueTeam2;
     }
 
     render() {
@@ -147,7 +174,7 @@ class App extends Component {
     }
 }
 
-const changeTeam = (sectionID) =>{
+const changeTeam = (sectionID) => {
     const newSectionID = "" + sectionID;
     const newID = newSectionID[0] === "1" ? "2" : "1";
 
@@ -189,7 +216,7 @@ const checkSpaceLeftMatrix = (matrix) => {
         for (let q = 0; q < width; q++) {
             if (matrix[i][q] === 0) {
                 return true;
-             }
+            }
         }
     }
 
