@@ -171,17 +171,17 @@
   .hexagon.team-1.group-25 .bottom {
     border-top-color: white; }
   .hexagon.team-1.hovered-section .top {
-    border-bottom-color: black; }
+    border-bottom-color: #fff44d; }
   .hexagon.team-1.hovered-section .middle {
-    background: black; }
+    background: #fff44d; }
   .hexagon.team-1.hovered-section .bottom {
-    border-top-color: black; }
+    border-top-color: #fff44d; }
   .hexagon.team-1.clicked-section .top {
-    border-bottom-color: #27ff3e; }
+    border-bottom-color: #59ff50; }
   .hexagon.team-1.clicked-section .middle {
-    background: #27ff3e; }
+    background: #59ff50; }
   .hexagon.team-1.clicked-section .bottom {
-    border-top-color: #27ff3e; }
+    border-top-color: #59ff50; }
   .hexagon.team-2.group-1 .top {
     border-bottom-color: #355dff; }
   .hexagon.team-2.group-1 .middle {
@@ -483,17 +483,17 @@
   .hexagon.team-2.group-50 .bottom {
     border-top-color: white; }
   .hexagon.team-2.hovered-section .top {
-    border-bottom-color: black; }
+    border-bottom-color: #fff44d; }
   .hexagon.team-2.hovered-section .middle {
-    background: black; }
+    background: #fff44d; }
   .hexagon.team-2.hovered-section .bottom {
-    border-top-color: black; }
+    border-top-color: #fff44d; }
   .hexagon.team-2.clicked-section .top {
-    border-bottom-color: #27ff3e; }
+    border-bottom-color: #59ff50; }
   .hexagon.team-2.clicked-section .middle {
-    background: #27ff3e; }
+    background: #59ff50; }
   .hexagon.team-2.clicked-section .bottom {
-    border-top-color: #27ff3e; }
+    border-top-color: #59ff50; }
 
 .hexagon .top {
   width: 0;
