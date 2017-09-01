@@ -66,7 +66,7 @@ class App extends Component {
             const {sectionClicked, sectionsObject, activePlayer} = prevState;
 
             //Active player can only hover its own sections
-            if ((activePlayer !== getPlayerID(sectionID) && sectionClicked === 0) || sectionsObject[sectionID].towersValue === 1) {
+            if ((activePlayer !== getPlayerID(sectionID) && sectionClicked === 0) || (sectionsObject[sectionID].towersValue === 1 && getPlayerID(sectionID) === activePlayer)) {
                 return {sectionHovered: 0}
             }
 
@@ -85,7 +85,7 @@ class App extends Component {
         this.setState((prevState) => {
             const {sectionClicked, sectionHovered, activePlayer, sectionsObject} = prevState;
 
-            if (sectionClicked === sectionID || sectionsObject[sectionID].towersValue === 1)
+            if (sectionClicked === sectionID || (sectionsObject[sectionID].towersValue === 1  && getPlayerID(sectionID) === activePlayer))
                 return {sectionClicked: 0};
             else if (sectionClicked !== 0 && sectionID === sectionHovered) {
                 this.conquerNewSection(sectionID);
@@ -146,8 +146,9 @@ class App extends Component {
     }
 
     render() {
-        const {masterMatrix, sectionHovered, sectionClicked, sectionsObject} = this.state;
+        const {masterMatrix, sectionHovered, sectionClicked, sectionsObject, activePlayer} = this.state;
         const addedTowerValues = [];
+
         return (
             <div>
                 {   masterMatrix.map((row, index) => {
@@ -184,7 +185,9 @@ class App extends Component {
                 )}
                 <div className="clearfix"></div>
                 <div className="cont">
+                    {"Player " + activePlayer + " turn"}
                     <button type="button" id="pass-turn" onClick={() => this.passTurn()}>Finish turn</button>
+                    <Hexagon classNam={"hexagon team-"+activePlayer}></Hexagon>
                 </div>
             </div>
         )

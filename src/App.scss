@@ -34,9 +34,9 @@ $hexagon-size: 26px;
   }
 
   &.team-1 {
-    @for $i from 1 through 100 {
-      &.group-#{$i} {
-        $percentage: 1*$i;
+    //@for $i from 1 through 100 {
+    //  &.group-#{$i} {
+    //    $percentage: 1*$i;
         $modified-team1-color: $team1-color;
         //@if $i < 30 {
         //  $modified-team1-color: darken($team1-color, $percentage);
@@ -55,8 +55,8 @@ $hexagon-size: 26px;
         .bottom {
           border-top-color: $modified-team1-color;
         }
-      }
-    }
+      //}
+    //}
 
     &.hovered-section {
 
@@ -90,9 +90,9 @@ $hexagon-size: 26px;
 
   &.team-2 {
 
-    @for $i from 1 through 100 {
-      &.group-#{$i} {
-        $percentage: 1.5*$i;
+    //@for $i from 1 through 100 {
+    //  &.group-#{$i} {
+    //    $percentage: 1.5*$i;
         $modified-team2-color: $team2-color;
         //@if $i < 30{
         //  $modified-team2-color: darken($team2-color, $percentage);
@@ -111,8 +111,8 @@ $hexagon-size: 26px;
         .bottom {
           border-top-color: $modified-team2-color;
         }
-      }
-    }
+      //}
+    //}
 
     &.hovered-section {
 
@@ -201,12 +201,15 @@ $hexagon-size: 26px;
 
 .cont{
   padding: 40px;
-  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  //text-align: center;
   #pass-turn{
     padding: 20px;
     font-size: 14px;
     font-weight: bold;
     background: #ccc;
+    margin: 0 20px;
   }
 }
 
