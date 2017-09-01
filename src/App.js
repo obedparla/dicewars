@@ -11,13 +11,15 @@ class App extends Component {
             sectionHovered: 0,
             sectionClicked: 0,
             masterMatrix: [],
-            sectionsObject: {}
+            sectionsObject: {},
+            activePlayer: "1"
         };
         this.highlightSection = this.highlightSection.bind(this);
         this.selectSection = this.selectSection.bind(this);
         this.checkAllowedHover = this.checkAllowedHover.bind(this);
         this.conquerNewSection = this.conquerNewSection.bind(this);
         this.rollDices = this.rollDices.bind(this);
+        this.passTurn = this.passTurn.bind(this);
     }
 
     componentDidMount() {
@@ -27,13 +29,13 @@ class App extends Component {
 
     // * Check if the current section is adjacent to the clicked section.
     checkAllowedHover(sectionID, sectionPositions) {
-        const {masterMatrix, sectionClicked, sectionHovered} = this.state;
+        const {masterMatrix, sectionClicked, activePlayer} = this.state;
         // console.log(sectionPositions);
         const maxQ = masterMatrix[0].length - 1,
             maxI = masterMatrix.length - 1
         ;
 
-        // Check that hovered section belongs to the opposite team
+        // Player needs to hover over the non clicked section and over it's own sections.
         if (getPlayerID(sectionID) === getPlayerID(sectionClicked)) {
             return false;
         }
@@ -61,7 +63,12 @@ class App extends Component {
 
     highlightSection(sectionID) {
         this.setState((prevState) => {
-            const {sectionClicked, sectionsObject, masterMatrix} = prevState;
+            const {sectionClicked, sectionsObject, activePlayer} = prevState;
+
+            //Active player can only hover its own sections
+            if ((activePlayer !== getPlayerID(sectionID) && sectionClicked === 0) || sectionsObject[sectionID].towersValue === 1) {
+                return {sectionHovered: 0}
+            }
 
             // If there's no section clicked or the hover is allowed (when a section is clicked)
             // console.log(sectionsObject[sectionID].positions);
@@ -76,13 +83,16 @@ class App extends Component {
 
     selectSection(sectionID) {
         this.setState((prevState) => {
-            const {sectionClicked, sectionHovered} = prevState;
+            const {sectionClicked, sectionHovered, activePlayer, sectionsObject} = prevState;
 
-            if (sectionClicked === sectionID)
+            if (sectionClicked === sectionID || sectionsObject[sectionID].towersValue === 1)
                 return {sectionClicked: 0};
             else if (sectionClicked !== 0 && sectionID === sectionHovered) {
                 this.conquerNewSection(sectionID);
                 return {sectionClicked: 0}
+            }
+            else if (activePlayer !== getPlayerID(sectionID)) {
+                return {sectionClicked: sectionClicked}; // If click is on a non-player section, leave the same section clicked
             }
             else
                 return {sectionClicked: sectionID};
@@ -108,13 +118,13 @@ class App extends Component {
             delete sectionsObject[sectionID];
 
             // Attacker towers = 1 and attacked section = all of the attacker's - 1
-            sectionsObject[changedTeam].towersValue = sectionsObject[sectionClicked].towersValue -1;
+            sectionsObject[changedTeam].towersValue = sectionsObject[sectionClicked].towersValue - 1;
             sectionsObject[sectionClicked].towersValue = 1;
 
 
             this.setState({masterMatrix: masterMatrix, sectionsObject: sectionsObject});
         }
-        else{
+        else {
             // The challenger lost, leave it with only 1 tower
             sectionsObject[sectionClicked].towersValue = 1;
             this.setState({sectionsObject: sectionsObject});
@@ -128,6 +138,11 @@ class App extends Component {
         ;
 
         return valueTeam1 > valueTeam2;
+    }
+
+    passTurn() {
+        const {activePlayer} = this.state;
+        this.setState({activePlayer: activePlayer === "1" ? "2" : "1"});
     }
 
     render() {
@@ -161,12 +176,16 @@ class App extends Component {
                                     children = sectionsObject[sectionID].towersValue;
                                 }
 
-                                return <Hexagon key={sectionID + "" + index} classNam={hexagonClass} onClick={() => this.selectSection(sectionID)}
+                                return <Hexagon key={sectionID + "" + index} classNam={hexagonClass} onClick={ () => this.selectSection(sectionID)}
                                                 onMouseOver={() => this.highlightSection(sectionID)} children={children}/>
                             })}
                         </div>
                     }
                 )}
+                <div className="clearfix"></div>
+                <div className="cont">
+                    <button type="button" id="pass-turn" onClick={() => this.passTurn()}>Finish turn</button>
+                </div>
             </div>
         )
     }
@@ -237,7 +256,7 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
     while (checkSpaceLeftMatrix(masterMatrix)) {
 
         const randPlayerID = getRandomInt(1, 3), // get 1 or 2 randomly
-            sectionHeight = getRandomInt(1, sectionMaxHeight)
+            sectionHeight = getRandomInt(2, sectionMaxHeight)
         ;
 
         const currentPlayerID = randPlayerID === 1 ? (playerOneID_counter + counter) : (playerTwoID_counter + counter);
@@ -256,7 +275,7 @@ const populateMap = (width, height, playerCounterMultiplier = 1000) => {
 
         for (let i = 0; i < height; i++) {
 
-            const sectionWidth = getRandomInt(1, sectionMaxWidth);
+            const sectionWidth = getRandomInt(2, sectionMaxWidth);
             let currentWidth = 0,
                 addedValue = false;
 

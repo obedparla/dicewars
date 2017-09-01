@@ -12,7 +12,7 @@ $hexagon-size: 26px;
   margin-bottom: -($hexagon-size/2);
   position: relative;
 
-  .children{
+  .children {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -28,7 +28,7 @@ $hexagon-size: 26px;
     font-weight: bold;
     font-family: Lato;
 
-    &:empty{
+    &:empty {
       background: transparent;
     }
   }
@@ -58,7 +58,8 @@ $hexagon-size: 26px;
       }
     }
 
-    &.hovered-section{
+    &.hovered-section {
+
       .top {
         border-bottom-color: $hovered-color;
       }
@@ -72,7 +73,7 @@ $hexagon-size: 26px;
       }
     }
 
-    &.clicked-section{
+    &.clicked-section {
       .top {
         border-bottom-color: $clicked-color;
       }
@@ -113,7 +114,8 @@ $hexagon-size: 26px;
       }
     }
 
-    &.hovered-section{
+    &.hovered-section {
+
       .top {
         border-bottom-color: $hovered-color;
       }
@@ -127,8 +129,7 @@ $hexagon-size: 26px;
       }
     }
 
-
-    &.clicked-section{
+    &.clicked-section {
       .top {
         border-bottom-color: $clicked-color;
       }
@@ -157,7 +158,7 @@ $hexagon-size: 26px;
 
 .hexagon .middle {
   width: $hexagon-size*2;
-  height: $hexagon-size + ($hexagon-size*0.154) ;
+  height: $hexagon-size + ($hexagon-size*0.154);
   background: $no-team-color;
 }
 
@@ -195,5 +196,32 @@ $hexagon-size: 26px;
     &:after {
       border-top-color: blue;
     }
+  }
+}
+
+.cont{
+  padding: 40px;
+  text-align: center;
+  #pass-turn{
+    padding: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    background: #ccc;
+  }
+}
+
+
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
   }
 }
