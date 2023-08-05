@@ -4,11 +4,15 @@ $no-team-color: #ececec;
 $hovered-color: #fff44d;
 $clicked-color: #59ff50;
 
-$hexagon-size: 26px;
+$hexagon-size: 1.625em;
+
+html{
+  font-size: 0.85vw;
+}
 
 .hexagon {
   float: left;
-  margin-left: 3px;
+  margin-left: 0.1875em;
   margin-bottom: -($hexagon-size/2);
   position: relative;
 
@@ -19,14 +23,13 @@ $hexagon-size: 26px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 20px;
+    width: 1.20em;
     text-align: center;
     padding: 5px;
     background: white;
     border-radius: 4px;
-    font-size: 18px;
     font-weight: bold;
-    font-family: Lato;
+    font-family: Lato, sans-serif;
 
     &:empty {
       background: transparent;
@@ -34,16 +37,7 @@ $hexagon-size: 26px;
   }
 
   &.team-1 {
-    //@for $i from 1 through 100 {
-    //  &.group-#{$i} {
-    //    $percentage: 1*$i;
         $modified-team1-color: $team1-color;
-        //@if $i < 30 {
-        //  $modified-team1-color: darken($team1-color, $percentage);
-        //
-        //}@else{
-        //  $modified-team1-color: lighten($team1-color, $percentage);
-        //}
         .top {
           border-bottom-color: $modified-team1-color;
         }
@@ -55,8 +49,6 @@ $hexagon-size: 26px;
         .bottom {
           border-top-color: $modified-team1-color;
         }
-      //}
-    //}
 
     &.hovered-section {
 
@@ -89,17 +81,7 @@ $hexagon-size: 26px;
   }
 
   &.team-2 {
-
-    //@for $i from 1 through 100 {
-    //  &.group-#{$i} {
-    //    $percentage: 1.5*$i;
         $modified-team2-color: $team2-color;
-        //@if $i < 30{
-        //  $modified-team2-color: darken($team2-color, $percentage);
-        //
-        //}@else{
-        //  $modified-team2-color: lighten($team2-color, $percentage);
-        //}
         .top {
           border-bottom-color: $modified-team2-color;
         }
@@ -111,8 +93,6 @@ $hexagon-size: 26px;
         .bottom {
           border-top-color: $modified-team2-color;
         }
-      //}
-    //}
 
     &.hovered-section {
 
@@ -151,7 +131,7 @@ $hexagon-size: 26px;
 
 .hexagon .top {
   width: 0;
-  border-bottom: $hexagon-size*0.577 solid $no-team-color;
+  border-bottom: 1em solid $no-team-color;
   border-left: $hexagon-size solid transparent;
   border-right: $hexagon-size solid transparent;
 }
@@ -170,7 +150,7 @@ $hexagon-size: 26px;
 }
 
 .hexagon-row.even {
-  margin-left: $hexagon-size + 1;
+  margin-left: $hexagon-size;
 }
 
 .hexagon-row {
@@ -203,7 +183,7 @@ $hexagon-size: 26px;
   padding: 40px;
   font-weight: bold;
   font-size: 14px;
-  //text-align: center;
+
   #pass-turn{
     padding: 20px;
     font-size: 14px;

@@ -1,7 +1,10 @@
+html {
+  font-size: 0.85vw; }
+
 .hexagon {
   float: left;
-  margin-left: 3px;
-  margin-bottom: -13px;
+  margin-left: 0.1875em;
+  margin-bottom: -0.8125em;
   position: relative; }
   .hexagon .children {
     position: absolute;
@@ -10,14 +13,13 @@
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 20px;
+    width: 1.20em;
     text-align: center;
     padding: 5px;
     background: white;
     border-radius: 4px;
-    font-size: 18px;
     font-weight: bold;
-    font-family: Lato; }
+    font-family: Lato, sans-serif; }
     .hexagon .children:empty {
       background: transparent; }
   .hexagon.team-1 .top {
@@ -59,23 +61,23 @@
 
 .hexagon .top {
   width: 0;
-  border-bottom: 15.002px solid #ececec;
-  border-left: 26px solid transparent;
-  border-right: 26px solid transparent; }
+  border-bottom: 1em solid #ececec;
+  border-left: 1.625em solid transparent;
+  border-right: 1.625em solid transparent; }
 
 .hexagon .middle {
-  width: 52px;
-  height: 30.004px;
+  width: 3.25em;
+  height: 1.87525em;
   background: #ececec; }
 
 .hexagon .bottom {
   width: 0;
-  border-top: 15.002px solid #ececec;
-  border-left: 26px solid transparent;
-  border-right: 26px solid transparent; }
+  border-top: 0.93762em solid #ececec;
+  border-left: 1.625em solid transparent;
+  border-right: 1.625em solid transparent; }
 
 .hexagon-row.even {
-  margin-left: 27px; }
+  margin-left: 1.625em; }
 
 .hexagon-row {
   clear: left; }
@@ -111,5 +113,3 @@
     line-height: 0; }
   .clearfix:after {
     clear: both; }
-
-/*# sourceMappingURL=App.css.map */
