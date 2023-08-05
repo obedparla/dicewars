@@ -4,16 +4,21 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
+    "concurrently": "^8.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
+    "node-sass": "^9.0.0",
+    "nodemon": "^3.0.1",
     "react-scripts": "1.0.11"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "node-sass --include-path scss src/App.scss src/App.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\" "
   }
 }
