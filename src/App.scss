@@ -1,13 +1,41 @@
-$team1-color: #ff26a5;
-$team2-color: #496dff;
+$team1-color: #ff70a6;
+$team2-color: #70d6ff;
 $no-team-color: #ececec;
-$hovered-color: #fff44d;
-$clicked-color: #59ff50;
+$hovered-color: #ffc170;
+$clicked-color: #ffd60a;
 
 $hexagon-size: 1.625em;
 
-html{
+html {
   font-size: 0.85vw;
+  background: #0e1627;
+}
+
+.turn_info {
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.finish_turn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 19px;
+  font-weight: bold;
+  color: white;
+}
+
+.finish_turn.player_one {
+  background: $team1-color;
+}
+
+.finish_turn.player_two {
+  background: $team2-color;
+}
+
+.info_container__author{
+
 }
 
 .hexagon {
@@ -23,9 +51,9 @@ html{
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 1.20em;
+    width: 1em;
     text-align: center;
-    padding: 5px;
+    padding: 3px;
     background: white;
     border-radius: 4px;
     font-weight: bold;
@@ -37,18 +65,19 @@ html{
   }
 
   &.team-1 {
-        $modified-team1-color: $team1-color;
-        .top {
-          border-bottom-color: $modified-team1-color;
-        }
+    $modified-team1-color: $team1-color;
 
-        .middle {
-          background: $modified-team1-color;
-        }
+    .top {
+      border-bottom-color: $modified-team1-color;
+    }
 
-        .bottom {
-          border-top-color: $modified-team1-color;
-        }
+    .middle {
+      background: $modified-team1-color;
+    }
+
+    .bottom {
+      border-top-color: $modified-team1-color;
+    }
 
     &.hovered-section {
 
@@ -81,18 +110,19 @@ html{
   }
 
   &.team-2 {
-        $modified-team2-color: $team2-color;
-        .top {
-          border-bottom-color: $modified-team2-color;
-        }
+    $modified-team2-color: $team2-color;
 
-        .middle {
-          background: $modified-team2-color;
-        }
+    .top {
+      border-bottom-color: $modified-team2-color;
+    }
 
-        .bottom {
-          border-top-color: $modified-team2-color;
-        }
+    .middle {
+      background: $modified-team2-color;
+    }
+
+    .bottom {
+      border-top-color: $modified-team2-color;
+    }
 
     &.hovered-section {
 
@@ -122,10 +152,6 @@ html{
         border-top-color: $clicked-color;
       }
     }
-  }
-
-  &.team-2 {
-
   }
 }
 
@@ -153,49 +179,31 @@ html{
   margin-left: $hexagon-size;
 }
 
-.hexagon-row {
-  clear: left;
-
-  &.team-1 .hexagon {
-    background-color: $team2-color;
-
-    &:before {
-      border-bottom-color: $team2-color;
-    }
-    &:after {
-      border-top-color: $team2-color;
-    }
-
-  }
-  &.team-2 .hexagon {
-    background-color: blue;
-
-    &:before {
-      border-bottom-color: blue;
-    }
-    &:after {
-      border-top-color: blue;
-    }
-  }
-}
-
-.cont{
-  padding: 40px;
-  font-weight: bold;
+.info_container {
+  margin-top: 30px;
+  padding: 30px;
   font-size: 14px;
-
-  #pass-turn{
-    padding: 20px;
-    font-size: 14px;
-    font-weight: bold;
-    background: #ccc;
-    margin: 0 20px;
-  }
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: #f2e9e4;
+  justify-content: space-around;
 }
 
+.info_container__turn{
+  display: flex;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.info_container__author a{
+  font-weight: bold;
+  color: black;
+}
 
 .clearfix {
   *zoom: 1;
+
   &:before,
   &:after {
     display: table;
@@ -204,6 +212,7 @@ html{
     // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
     line-height: 0;
   }
+
   &:after {
     clear: both;
   }

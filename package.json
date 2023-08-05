@@ -5,6 +5,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "concurrently": "^8.2.0",
+    "prettier": "^3.0.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
