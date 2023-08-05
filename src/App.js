@@ -32,7 +32,7 @@ class App extends Component {
 
   // * Check if the current section is adjacent to the clicked section.
   checkAllowedHover(sectionID, sectionPositions) {
-    const { masterMatrix, sectionClicked, activePlayer } = this.state;
+    const { masterMatrix, sectionClicked } = this.state;
     const maxQ = masterMatrix[0].length - 1,
       maxI = masterMatrix.length - 1;
     // Player needs to hover over the non clicked section and over it's own sections.
@@ -382,19 +382,6 @@ const createMasterMatrix = (width, height) => {
   }
 
   return masterMatrix;
-};
-
-/**
- * Transforms a size number into an array to use map or foreach on it.
- * @param size
- * @returns {Array}
- */
-const sizeToArray = (size) => {
-  let array = [];
-  for (let i = 0; i < size; i++) {
-    array[i] = " ";
-  }
-  return array;
 };
 
 export default App;
