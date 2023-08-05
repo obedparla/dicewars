@@ -1,6 +1,6 @@
 # The dice-wars game developed entirely on React.
 
-![DiceWars](https://github.com/obedparla/dicewars/blob/main/public/promo.png)
+![DiceWars](https://github.com/obedparla/dicewars/blob/master/public/promo.png)
 
 ## Site: [dicewars.netlify.app](https://dicewars.netlify.app/)
 
